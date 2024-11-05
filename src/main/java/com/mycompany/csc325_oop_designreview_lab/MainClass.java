@@ -3,6 +3,7 @@
  */
 
 package com.mycompany.csc325_oop_designreview_lab;
+import java.util.Scanner;
 
 /**
  *
@@ -11,30 +12,35 @@ package com.mycompany.csc325_oop_designreview_lab;
 public class MainClass {
 
  public static void main(String[] args) {
-		// ToDo 5: Fix the error
+	 	Scanner s = new Scanner(System.in);
 
-		// ToDo 6: Fix the constructor of the Student class
-
-                // Todo 7: Create two classes for Freshman and Senior 
-
-                // ToDo 8: The senior class should have a minimum of 85 credits  
-
-		// ToDo 9: Add a toString method for the Student class
-		// ToDo 10: Add a toString method for the Freshman class
-
-		Student std1= new Student("James", 20);
-                // ToDo 11: Add a toString method for the Senior class
-
-		Freshman std1= new Student("James", 20, 12); // name, age, credits
-
-                Senior std2 = new Student("John", 30, 90);
-
-		// ToDo 12: Set the gpa of the student using the scanner and user
-		// 			input and then print the output.
+		Student std1= new Student("James", (short) 20, 90); // name, age, credits | General Student
+		Student std= new Freshman("James", (short) 20, 12); // name, age, credits | Freshman Student
+	    Student std2 = new Senior("John", (short) 30, 88); // name, age, credits  | Senior Student
+//	 	Student std3Error = new Senior("Errorboy", (short) 30, 23); TESTING STATEMENT FOR ERROR THROWN WITH TOO FEW CREDITS
 
 		System.out.println(std1);
+		System.out.println(std);
+		System.out.println(std2);
+//		System.out.println(std3Error);
 
-                System.out.println(std2);
+	 	Student newStudent;
+	 	System.out.println("Enter your name: ");
+	 	String Name = s.next(); //Next input for Name
+	 	System.out.println("Enter your age: ");
+		short age = s.nextShort(); //Next input for age
+	 	System.out.println("Enter your credit count: ");
+		int credits = s.nextInt(); //Next input for credits
+	 	System.out.println("Enter your academic standing: ");
+		String standing = s.next(); //Next input for academic standing
+		if(standing.equals("Freshman")){ //If standing is Freshman
+			newStudent = new Freshman(Name, age, credits);
+		} else if (standing.equals("Senior")){ //If standing is Senior
+			newStudent = new Senior(Name, age, credits); //No exception here, since its handled in the class itself
+		} else { //Otherwise assumes the generic
+			newStudent = new Student(Name, age, credits);
+		}
+		System.out.println(newStudent);
 
 		// ToDo 13: add comments and explain your code
 
